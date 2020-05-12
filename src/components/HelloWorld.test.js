@@ -19,7 +19,8 @@ describe('HelloWorld', () => {
 
     // Assert tag name
     const h1 = wrapper.find('h1')
-    expect(h1.element.tagName).toBe('H1')
+    // expect(h1.is('h1')).toBe(true) // vue-test-utils beta 33 syntax
+    expect(h1.element.tagName).toBe('H1') // vue-test-utils 1.0.0 syntax
 
     // Assert props being set
     expect(wrapper.text()).toBe('Hello world')
