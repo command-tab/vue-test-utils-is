@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "lint": "vue-cli-service lint"
     "build": "vue-cli-service build --target lib --name hello-world ./src/components/index.js",
+    "lint": "vue-cli-service lint",
+    "test": "jest"
   },
   "dependencies": {
     "core-js": "^3.6.4",
@@ -16,15 +17,45 @@
     "@vue/cli-plugin-eslint": "~4.3.0",
     "@vue/cli-service": "~4.3.0",
     "babel-eslint": "^10.1.0",
+    "babel-jest": "25.4.0",
+    "babel-core": "7.0.0-bridge.0",
+    "standard": "14.3.3",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "@vue/test-utils": "1.0.0",
+    "jest": "25.4.0",
+    "vue-jest": "3.0.5",
     "vue-template-compiler": "^2.6.11"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/components/*.vue",
+      "!**/node_modules/**"
+    ],
+    "coverageReporters": [
+      "html",
+      "text-summary"
+    ]
   },
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "jest/globals": true
     },
+    "plugins": [
+      "jest"
+    ],
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended"
